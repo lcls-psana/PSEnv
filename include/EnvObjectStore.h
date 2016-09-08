@@ -95,8 +95,9 @@ public:
   /**
    *  @brief Add one more proxy object to the store
    *
-   *  @param[in] proxy   Proxy object for type T.
-   *  @param[in] source Source detector address.
+   *  @param[in] proxy - Proxy object for type T.
+   *  @param[in] source - Source detector address.
+   *  @param[in] key - ...
    */
   template <typename T>
   void putProxy(const boost::shared_ptr<PSEvt::Proxy<T> >& proxy, const Pds::Src& source,
@@ -115,8 +116,9 @@ public:
    *  If there is already an object with the same type and address it 
    *  will be replaced.
    *  
-   *  @param[in] data    Object to store in the event.
-   *  @param[in] source Source detector address.
+   *  @param[in] data - Object to store in the event.
+   *  @param[in] source - Source detector address.
+   *  @param[in] key - ...
    */
   template <typename T>
   void put(const boost::shared_ptr<T>& data, const Pds::Src& source,
@@ -134,7 +136,8 @@ public:
   /**
    *  @brief Get an object from store.
    *  
-   *  @param[in] source Source detector address.
+   *  @param[in] source - Source detector address.
+   *  @param[in] key - ...
    *  @return Shared pointer (or object convertible to it) which can be zero when object is not found.
    */
   GetResultProxy get(const Pds::Src& source, const std::string& key=std::string()) 
@@ -146,9 +149,10 @@ public:
   /**
    *  @brief Get an object from store.
    *  
-   *  @param[in] source Source detector address.
-   *  @param[out] foundSrc If pointer is non-zero then pointed object will be assigned 
+   *  @param[in] source - Source detector address.
+   *  @param[out] foundSrc - If pointer is non-zero then pointed object will be assigned 
    *                       with the exact source address of the returned object.
+   *  @param[in] key - ...
    *  @return Shared pointer (or object convertible to it) which can be zero when object is not found.
    */
   GetResultProxy get(const PSEvt::Source& source, Pds::Src* foundSrc=NULL, const std::string& key=std::string()) 
