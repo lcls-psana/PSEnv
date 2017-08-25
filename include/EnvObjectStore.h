@@ -132,6 +132,17 @@ public:
     }
     m_dict->put(proxyPtr, evKey);
   }
+
+  template <typename T>
+  void put(const boost::shared_ptr<T>& data, const std::string& key=std::string())
+  {
+    boost::shared_ptr<PSEvt::ProxyI> proxyPtr(new PSEvt::DataProxy<T>(data));
+    PSEvt::EventKey evKey(&typeid(const T), PSEvt::EventKey::noSource(), key);
+    if ( m_dict->exists(evKey) ) {
+      m_dict->remove(evKey);
+    }
+    m_dict->put(proxyPtr, evKey);
+  }
   
   /**
    *  @brief Get an object from store.
